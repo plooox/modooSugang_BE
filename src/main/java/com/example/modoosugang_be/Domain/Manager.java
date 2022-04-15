@@ -4,17 +4,18 @@ import lombok.*;
 
 import javax.persistence.*;
 
-@Getter @Setter
-@RequiredArgsConstructor
-@Entity()  // Connect table in DB
-@Table(name = "manager")
+@Getter
+@Setter             // getter setter 자동생성
+@RequiredArgsConstructor    // Constructor 주입 -> DI
+@Entity()                   // Connect table in DB
+@Table(name = "manager")    // DB table name = "manager"
 public class Manager {
 
     @Id
     @Column(name = "manager_id")
     private String id;  // Primary Key
 
-    @Column(name = "university_name")
+    @Column(name = "university_name")   // DB column "university_name" -> "univ"
     private String univ;
     @Column(name = "manager_email")
     private String email;

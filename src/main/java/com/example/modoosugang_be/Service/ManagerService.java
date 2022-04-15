@@ -12,7 +12,7 @@ import java.util.Optional;
 public class ManagerService {
     private final ManagerRepository managerRepository;
 
-    public Manager findManager(String id, String univ){
+    public Manager findManager(String id, String univ) {
         Optional<Manager> manager = managerRepository.findByIdAndUniv(id, univ);
 
         return manager.orElse(null); // 조회 성공하면 Manager값, 실패시 null
