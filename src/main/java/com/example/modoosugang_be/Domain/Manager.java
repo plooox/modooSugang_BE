@@ -11,9 +11,13 @@ import javax.persistence.*;
 public class Manager {
 
     @Id
-    private String managerId;  // Primary Key
+    @Column(name = "manager_id")
+    private String id;  // Primary Key
 
-    private String universityName;
-    private String managerEmail;
-    private String managerPw;
+    @Column(name = "university_name")
+    private String univ;
+    @Column(name = "manager_email")
+    private String email;
+    @Column(name = "manager_pw")
+    private String pw;
 }
