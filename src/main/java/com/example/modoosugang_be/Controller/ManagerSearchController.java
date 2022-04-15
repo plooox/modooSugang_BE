@@ -33,7 +33,7 @@ public class ManagerSearchController {
             data.put("univ", log.getUniv());
             data.put("lecture", log.getLecture());
             data.put("register", log.getRegister());
-            data.put("cancle", log.getCancel());
+            data.put("cancel", log.getCancel());
             data.put("retake", log.getRetake());
             data.put("modify", log.getModify());
             list.add(data);
