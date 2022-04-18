@@ -17,15 +17,18 @@ import java.util.Date;
 @Table(name = "student_log")    // DB table name
 public class StudentLog {
 
+    @Id
+    @Column(name = "log_id")
+    private int log;
+
     @Column(name = "student_id")
     private String id;
-
-    @Column(name = "university_name")
+    @Column(name = "univ_name")
     private String univ;
-
-    @Id
     @Column(name = "lecture_id")
     private String lecture;
+    @Column(name = "semester")
+    private String semester;
     @Column(name = "register_log")
     private Date register;
     @Column(name = "cancle_log")

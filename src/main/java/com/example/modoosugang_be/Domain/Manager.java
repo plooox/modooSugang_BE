@@ -15,7 +15,7 @@ public class Manager {
     @Column(name = "manager_id")
     private String id;  // Primary Key
 
-    @Column(name = "university_name")   // DB column "university_name" -> "univ"
+    @Column(name = "univ_name")   // DB column "university_name" -> "univ"
     private String univ;
     @Column(name = "manager_email")
     private String email;
