@@ -29,6 +29,7 @@ public class ManagerSearchController {
         for (StudentLog log : logs){
             JSONObject data = new JSONObject();
 
+            // Create Json Array
             data.put("id", log.getId());
             data.put("univ", log.getUniv());
             data.put("lecture", log.getLecture());
