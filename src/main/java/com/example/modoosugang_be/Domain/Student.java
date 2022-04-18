@@ -22,7 +22,7 @@ public class Student {
     @Column(name = "student_year")
     private String year;
     @Column(name = "student_birth")
-    private Date birth;
+    private Date birth;                 // 시분초 넣는다고 했는데 DateTime 아니어도 되나?
     @Column(name = "student_phone")
     private String phone;
     @Column(name = "student_major")
