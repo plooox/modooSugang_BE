@@ -1,8 +1,10 @@
 package com.example.modoosugang_be.Domain;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter             // getter setter 자동생성
