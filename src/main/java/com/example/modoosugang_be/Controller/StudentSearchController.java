@@ -17,17 +17,13 @@ import java.util.Map;
 public class StudentSearchController {
     private final LectureService lectureService;
 
-    @PostMapping("/student/class")
-    public List searchLectures(@RequestBody Map<String, Object> param){
+    @GetMapping("/student/class/{univ}")
+    public List searchLectures(@PathVariable(name = "univ") String univ){
 
-        String univ = param.get("univ").toString();
-        System.out.println(univ);
         List<Lecture> lectures = lectureService.callUnivLecture(univ);
         List list = new ArrayList();
 
         for (Lecture lecture : lectures) {
-            System.out.println(lecture.getId());
-            System.out.println(lecture);
             JSONObject data = new JSONObject();
 
             data.put("lecture_id", lecture.getId());

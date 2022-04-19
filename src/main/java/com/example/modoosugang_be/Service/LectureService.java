@@ -14,7 +14,6 @@ public class LectureService {
     private final LectureRepository lectureRepository;
 
     public List<Lecture>callUnivLecture(String univ) {
-        System.out.println("Service: "+univ);
         List<Lecture> lectures = lectureRepository.findLecture(univ);
 
         return lectures;
