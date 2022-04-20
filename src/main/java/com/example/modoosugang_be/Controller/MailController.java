@@ -24,7 +24,10 @@ public class MailController {
     private final ProfessorService professorService;
     private final RequestingService requestingService;
 
-    @Scheduled(fixedDelay = 10000)
+//    10초에 한번씩 실행
+//    @Scheduled(fixedDelay = 10000)
+//    매일 자정에 실행
+    @Scheduled(cron = "0 0 0 * * *")
     public void handleRequesting(){
         List<Professor> professorList = professorService.callProfessorList();
 
