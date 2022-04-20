@@ -6,11 +6,17 @@ import lombok.*;
 
 public class LectureDto {
     private int index;
-    private String name;
-    private int limit;
-    private int credit;
-    private String major;
-    private String professor;
-    private String start;
-    private String end;
+    private String lecture_id;
+    private String professor_id;
+    private String lecture_name;
+    private int  lecture_limit;
+    private int  lecture_credit;
+    private String  lecture_major;
+    private String  lecture_classes;
+    private String  lecture_room;
+    private String  lecture_semester;
+    private String  lecture_professor;
+    private String  lecture_time;
+    private String  lecture_classify;
+    private String  univ_name;
 }

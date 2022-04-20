@@ -5,8 +5,6 @@ import org.springframework.stereotype.Component;
 import com.example.modoosugang_be.Domain.Lecture;
 import com.example.modoosugang_be.Dto.LectureDto;
 
-import java.util.ArrayList;
-import java.util.List;
 @Component
 
 public class LectureConverter {
@@ -22,7 +20,7 @@ public class LectureConverter {
         Lecture map = modelMapper.map(lectureTimeTableDto, Lecture.class);
         return map;
     }
-    public List<Lecture> listsToLectureList(List<List<String>> list) {
+    /*public List<Lecture> listsToLectureList(List<List<String>> list) {
         List<Lecture> lectureList = new ArrayList<>();
         for (int i = 1; i <= list.toArray().length - 1; i++) {
             List<String> temp = list.get(i);
@@ -37,10 +35,11 @@ public class LectureConverter {
 
             Lecture lecture = new Lecture(id, name, Integer.valueOf(limit).intValue(), Integer.valueOf(credit).intValue(),
                     major, professor, start, end);
+
             lectureList.add(lecture);
         }
         return lectureList;
-    }
+    }*/
 }
 
 

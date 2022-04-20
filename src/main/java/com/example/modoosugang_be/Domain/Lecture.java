@@ -45,6 +45,6 @@ public class Lecture {
     private String time;
     @Column(name = "lecture_classify")
     private String classify;
-    @Column(name = "university_name")
+    @Column(name = "univ_name")
     private String univ;
 }
