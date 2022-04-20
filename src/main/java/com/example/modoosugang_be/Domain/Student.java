@@ -37,6 +37,6 @@ public class Student {
     private int credit;
     @Column(name = "student_pw")
     private String pw;
-    @Column(name = "university_name")
+    @Column(name = "univ_name")
     private String univ;
 }

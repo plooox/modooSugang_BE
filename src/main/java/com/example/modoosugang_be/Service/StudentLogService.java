@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class StudentLogService {
-    @Autowired
+
     private final StudentLogRepository studentLogRepository;
 
     public List<StudentLog> findStudentLog(String univ, String id) {
