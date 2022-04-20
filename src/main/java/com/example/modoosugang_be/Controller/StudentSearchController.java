@@ -17,7 +17,6 @@ public class StudentSearchController {
 
     @GetMapping("/student/class/{univ}")
     public List searchLectures(@PathVariable(name = "univ") String univ){
-
         List<Lecture> lectures = lectureService.callUnivLecture(univ);
         List list = new ArrayList();
 

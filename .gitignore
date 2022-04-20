@@ -38,3 +38,4 @@ out/
 
 ### resource ###
 ./src/main/resources/application.properties
+./src/main/java/com/example/modoosugang_be/MailConfig.java
