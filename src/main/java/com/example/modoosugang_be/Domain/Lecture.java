@@ -8,18 +8,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
 
 @Getter
 @Setter             // getter setter 자동생성
 @RequiredArgsConstructor    // Constructor 주입 -> DI
 @Entity()                   // Connect table in DB
-@Table(name = "lecture")    // DB table name = "student"
+@Table(name = "lecture")    // DB table name = "lecture"
 public class Lecture {
 
     @Id
-    @Column(name = "lecture_idx")
-    private int idx;
+    @Column(name = "lecture_index")
+    private int index;
 
     @Column(name = "lecture_id")
     private String id;
@@ -45,6 +44,6 @@ public class Lecture {
     private String time;
     @Column(name = "lecture_classify")
     private String classify;
-    @Column(name = "univ_name")
-    private String univ;
+    @Column(name = "university_name")
+    private String university;
 }
