@@ -1,4 +1,4 @@
-package com.example.modoosugang_be.Dto;
+/*package com.example.modoosugang_be.Dto;
 import lombok.*;
 @Builder
 @Data
@@ -19,4 +19,4 @@ public class LectureDto {
     private String  lecture_time;
     private String  lecture_classify;
     private String  univ_name;
-}
+}*/

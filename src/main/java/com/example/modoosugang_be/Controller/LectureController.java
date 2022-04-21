@@ -22,8 +22,8 @@ public class LectureController {
     @PostMapping("/manage/upload/timetable")
     public int UploadLecture(@RequestBody Map<String, Object> param) {
         String id = param.get("id").toString();
-        String professor = param.get("start").toString();
-        String name = param.get("start").toString();
+        String proid = param.get("proid").toString();
+        String name = param.get("name").toString();
         int limit = (int) param.get("limit");
         int credit = (int)param.get("credit");
         String major = param.get("major").toString();
@@ -35,6 +35,6 @@ public class LectureController {
         String classify = param.get("classify").toString();
         String univ = param.get("univ").toString();
 
-        return lectureService.setUpdateLecture(id, professor, name, limit, credit, major, classes, room, semester, proname, time, classify, univ);
+        return lectureService.setUpdateLecture(id, proid, name, limit, credit, major, classes, room, semester, proname, time, classify, univ);
     }
 }

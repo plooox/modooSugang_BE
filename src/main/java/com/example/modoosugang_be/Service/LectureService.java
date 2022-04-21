@@ -22,8 +22,8 @@ public class LectureService {
         return lectures;
     }
 
-    public int setUpdateLecture(String id, String professor, String name, int limit, int credit, String major, String classes, String room, String semester, String proname, String time, String classify, String univ ) {
-        int lectures = lectureRepository.UpdateLecture(id, professor, name, limit, credit, major, classes, room, semester, proname, time, classify, univ);
+    public int setUpdateLecture(String id, String proid, String name, int limit, int credit, String major, String classes, String room, String semester, String proname, String time, String classify, String univ) {
+        int lectures = lectureRepository.UpdateLecture(id, proid, name, limit, credit, major, classes, room, semester, proname, time, classify, univ);
 
         return lectures;
     }

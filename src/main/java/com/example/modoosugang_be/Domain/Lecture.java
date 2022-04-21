@@ -23,7 +23,7 @@ public class Lecture {
     @Column(name = "lecture_id")
     private String id;
     @Column(name = "professor_id")
-    private String professor;
+    private String proid;
     @Column(name = "lecture_name")
     private String name;
     @Column(name = "lecture_limit")
@@ -38,12 +38,12 @@ public class Lecture {
     private String room;
     @Column(name = "lecture_semester")
     private String semester;
-    @Column(name = "lecture_proffessor")
+    @Column(name = "lecture_professor")
     private String proname;
     @Column(name = "lecture_time")
     private String time;
     @Column(name = "lecture_classify")
     private String classify;
     @Column(name = "university_name")
-    private String university;
+    private String univ;
 }

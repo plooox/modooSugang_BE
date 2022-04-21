@@ -1,4 +1,4 @@
-package com.example.modoosugang_be.Converter;
+/*package com.example.modoosugang_be.Converter;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -41,7 +41,7 @@ public class LectureConverter {
             lectureList.add(lecture);
         }
         return lectureList;
-    }*/
-}
+    }
+}*/
 
 

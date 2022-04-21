@@ -1,4 +1,4 @@
-package com.example.modoosugang_be.Utils;
+/*package com.example.modoosugang_be.Utils;
 
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -22,4 +22,4 @@ public class FileUtils {
         Assert.state(!Files.exists(targetPath), fileName + " File alerdy exists.");
         file.transferTo(targetPath);
     }
-}
+}*/
