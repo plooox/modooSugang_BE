@@ -4,12 +4,10 @@ import com.example.modoosugang_be.Domain.Lecture;
 import com.example.modoosugang_be.Service.LectureService;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
@@ -19,7 +17,6 @@ public class StudentSearchController {
 
     @GetMapping("/student/class/{univ}")
     public List searchLectures(@PathVariable(name = "univ") String univ){
-
         List<Lecture> lectures = lectureService.callUnivLecture(univ);
         List list = new ArrayList();
 
@@ -41,6 +38,7 @@ public class StudentSearchController {
             list.add(data);
         }
         System.out.println(list);
+
         return list;
     }
 }
