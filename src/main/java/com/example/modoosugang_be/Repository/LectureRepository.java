@@ -1,7 +1,6 @@
 package com.example.modoosugang_be.Repository;
 
 import com.example.modoosugang_be.Domain.Lecture;
-import org.apache.tomcat.jni.Time;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
