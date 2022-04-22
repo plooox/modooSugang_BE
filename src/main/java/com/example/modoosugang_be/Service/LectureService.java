@@ -18,4 +18,9 @@ public class LectureService {
 
         return lectures;
     }
+
+    public Lecture callLecutureByUnivAndId(String univ, String id) {
+        return lectureRepository.findLectureByUnivAndID(univ, id);
+    }
+
 }

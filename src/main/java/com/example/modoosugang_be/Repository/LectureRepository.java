@@ -8,10 +8,10 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
-    List<Lecture> findAllByProfessorContains(String professor);
-
-    List<Lecture> findAllByUniv(String univ);
 
     @Query(value = "SELECT v FROM Lecture v WHERE v.professor Like :univ%")
     List<Lecture> findLecture(@Param("univ")String univ);
+
+    @Query(value = "SELECT v FROM Lecture v WHERE v.professor Like :univ% AND v.id = :id")
+    Lecture findLectureByUnivAndID(@Param("univ") String univ, @Param("id") String id);
 }

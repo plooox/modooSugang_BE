@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @Setter             // getter setter 자동생성
 @RequiredArgsConstructor    // Constructor 주입 -> DI
 @Entity()                   // Connect table in DB
-@Table(name = "lecture")    // DB table name = "student"
+@Table(name = "lecture")    // DB table name = "lecture"
 public class Lecture {
 
     @Id
@@ -47,4 +47,8 @@ public class Lecture {
     private String classify;
     @Column(name = "university_name")
     private String univ;
+    @Column(name = "first_schedule")
+    private String firstsch;
+    @Column(name = "second_schedule")
+    private String secondsch;
 }
