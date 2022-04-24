@@ -3,7 +3,7 @@ package com.example.modoosugang_be.Controller;
 import com.example.modoosugang_be.Domain.Schedule;
 import com.example.modoosugang_be.Service.ScheduleService;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.json.JSONParser;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
