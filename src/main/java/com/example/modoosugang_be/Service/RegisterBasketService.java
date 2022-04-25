@@ -9,13 +9,10 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class RegisterLectureService {
+public class RegisterBasketService {
 
     private final RegisterLectureRepository registerLectureRepository;
 
-    public List<RegisterLecture> findRegisterLecture(String univ, String student) {
-        return registerLectureRepository.findAllByUnivAndStudent(univ, student);
-    }
 
     public RegisterLecture save(RegisterLecture regist) {
         return registerLectureRepository.save(regist);

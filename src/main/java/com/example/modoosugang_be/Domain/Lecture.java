@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 @Getter
@@ -15,11 +16,11 @@ import java.sql.Timestamp;
 @RequiredArgsConstructor    // Constructor 주입 -> DI
 @Entity()                   // Connect table in DB
 @Table(name = "lecture")    // DB table name = "lecture"
-public class Lecture {
+public class Lecture implements Serializable {
 
     @Id
-    @Column(name = "lecture_idx")
-    private int idx;
+    @Column(name = "lecture_index")
+    private Long idx;
 
     @Column(name = "lecture_id")
     private String id;
@@ -51,4 +52,9 @@ public class Lecture {
     private String firstsch;
     @Column(name = "second_schedule")
     private String secondsch;
+    @Column(name = "lecture_remain")
+    private int remain;
+
+
+
 }

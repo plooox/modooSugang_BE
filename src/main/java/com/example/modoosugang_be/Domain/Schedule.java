@@ -18,7 +18,7 @@ import java.io.Serializable;
 public class Schedule implements Serializable {
 
     @Id
-    @Column(name = "id_schedule")
+    @Column(name = "schedule_index")
     private String Id;
 
     @Column(name = "semester")

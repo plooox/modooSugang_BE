@@ -28,7 +28,6 @@ public class StudentMypageController {
         List list = new ArrayList();
 
         for (RegisterLecture registerLecture : registerLectures) {
-            System.out.println(registerLecture.getLecture());
             Lecture lecture = lectureService.callLecutureByUnivAndId(univ, registerLecture.getLecture());
 
             JSONObject data = new JSONObject();

@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface RegisterLectureRepository extends JpaRepository<RegisterLecture, Long> {
-    List<RegisterLecture> findAllByUnivAndStudent(String univ, String student);
+public interface RegisterBasketRepository extends JpaRepository<RegisterLecture, Long> {
 
 }
