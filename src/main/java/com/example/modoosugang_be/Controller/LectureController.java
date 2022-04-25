@@ -36,17 +36,16 @@ public class LectureController {
                 String time = list.get(i).get(11);
                 String classify = list.get(i).get(12);
                 String univ = "카카오대학교";
-                int idx = Integer.parseInt(list.get(i).get(0));
-                System.out.println(Integer.parseInt(list.get(i).get(0).getClass().getName()));
-                int limit = Integer.parseInt(list.get(i).get(4));
-                int credit = Integer.parseInt(list.get(i).get(5));
-                LectureDto lectureDto = LectureDto.builder().name(name).credit(credit).limit(limit).classes(classes).major(major).room(room).semester(semester)
-                        .index(idx).univ(univ).time(time).professorId(proid).lectureId(id).classify(classify).professor(proname).build();
-                lectureList.add(lectureDto.toLecture());
-                /*}catch(NumberFormatException e){
+                try{
+                    int idx = Integer.parseInt(list.get(i).get(0));
+                    int limit = Integer.parseInt(list.get(i).get(4));
+                    int credit = Integer.parseInt(list.get(i).get(5));
+                    LectureDto lectureDto = LectureDto.builder().name(name).credit(credit).limit(limit).classes(classes).major(major).room(room).semester(semester)
+                            .index(idx).univ(univ).time(time).professorId(proid).lectureId(id).classify(classify).professor(proname).build();
+                    lectureList.add(lectureDto.toLecture());
+                }catch(NumberFormatException e){
                     e.printStackTrace();
-                }*/
-
+                }
             }
         }
 
