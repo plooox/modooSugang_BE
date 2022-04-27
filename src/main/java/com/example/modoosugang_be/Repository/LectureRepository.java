@@ -20,7 +20,6 @@ public interface LectureRepository extends JpaRepository<Lecture, Long> {
 
     List<Lecture> findAllBySemester(String semester);
 
-    List<Lecture> findAllByUniv(String univ);
 
 
     @Transactional

@@ -23,51 +23,51 @@ public class StudentEnrollController {
     private final LectureService lectureService;
     private final RegisterLectureService registerLectureService;
 
-    @PostMapping("/student/entroll/lecture_list")
+    @PostMapping("/student/enroll/lecture_list")
     public List LectureTable(@RequestBody Map<String, Object> param) {
         String semester = param.get("semester").toString();
         List<Lecture> logs = lectureService.findLectureList(semester);
-            List list = new ArrayList();
-            for (Lecture log : logs){
-                JSONObject data = new JSONObject();
+        List list = new ArrayList();
+        for (Lecture log : logs) {
+            JSONObject data = new JSONObject();
 
-                // Create Json Array
-                data.put("index", log.getIdx());
-                data.put("name", log.getName());
-                data.put("major", log.getMajor());
-                data.put("classify", log.getClassify());
-                data.put("time", log.getTime());
-                data.put("classes", log.getClasses());
-                data.put("credit", log.getCredit());
+            // Create Json Array
+            data.put("index", log.getIdx());
+            data.put("name", log.getName());
+            data.put("major", log.getMajor());
+            data.put("classify", log.getClassify());
+            data.put("time", log.getTime());
+            data.put("classes", log.getClasses());
+            data.put("credit", log.getCredit());
 
-                String remain = String.valueOf(log.getRemain());
-                String limit = String.valueOf(log.getLimit());
-                String remaining = remain + "/" + limit;
-                data.put("remaining", remaining);
+            String remain = String.valueOf(log.getRemain());
+            String limit = String.valueOf(log.getLimit());
+            String remaining = remain + "/" + limit;
+            data.put("remaining", remaining);
 
-                list.add(data);
-            }
-//        System.out.println("==================");
-//        System.out.println(list);
+            list.add(data);
+        }
+        System.out.println("1번테이블 ==================");
+        System.out.println(list);
 
         return list;
     }
 
-    @PostMapping("/student/entroll/apply/lecture")
+    @PostMapping("/student/enroll/apply/lecture")
     public boolean ApplyLecture(@RequestBody Map<String, Object> param) {
         System.out.println((param)); //  {id=1, code=1010}
 
 //        String id = param.get("id").toString();
-//        String code = param.get("code").toString();
+        String code = param.get("code").toString();
 //        String univ = param.get("univ").toString();
 //        String semester = param.get("semester").toString();
 
-        String semester ="2022_1";
-        String univ ="구름대학교";
-        int code = 1010;
+        String semester = "2022_1";
+        String univ = "구름대학교";
+//        int code = 1010;
 
         // code 값으로 lecture 테이블 remain 잔여확인
-        Optional<Lecture> OptionalLecture = lectureService.findRemain((long) code);
+        Optional<Lecture> OptionalLecture = lectureService.findRemain(Long.valueOf(code));
         int isRemain = OptionalLecture.get().getRemain();
         System.out.println((isRemain));
 
@@ -77,13 +77,13 @@ public class StudentEnrollController {
 
 
         if (isRemain > 0) {
-            int InputRemain = isRemain -1; // 잔여인원 차감
-            lectureService.setRemain((long) code, InputRemain); // 차감된 인원 DB update
+            int InputRemain = isRemain - 1; // 잔여인원 차감
+            lectureService.setRemain(Long.valueOf(code), InputRemain); // 차감된 인원 DB update
             // Register_lecture에 학생정보 적용
             RegisterLecture regist = new RegisterLecture();
 
             regist.setId(1L); // register_lecture_id : ??
-            regist.setIdx((long) code); // lecture_index : 강의code ?
+            regist.setIdx(Long.valueOf(code)); // lecture_index : 강의code ?
             regist.setLecture("BC1");
             regist.setStudent(student_id);
             regist.setSemester(semester);
@@ -92,10 +92,46 @@ public class StudentEnrollController {
             registerLectureService.save(regist);
 
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
-}
 
+
+    @PostMapping("/student/enroll/myenroll/")
+    public List MyEnrollList(@RequestBody Map<String, Object> param) {
+        System.out.println((param)); //  {id=1, code=1010}
+
+//        String id = param.get("id").toString();
+//        String code = param.get("code").toString();
+//        String univ = param.get("univ").toString();
+//        String semester = param.get("semester").toString();
+
+        String semester = "2022_1";
+        String univ = "구름대학교";
+        String student_id = "21611868"; // 일단 임의설정
+        int code = 1010;
+
+        List<RegisterLecture> logs = registerLectureService.findLectureList(semester, univ, student_id);
+        List list = new ArrayList();
+        for (RegisterLecture log : logs) {
+            Optional<Lecture> OptionalLecture = lectureService.findRemain((long) code);
+
+            JSONObject data = new JSONObject();
+
+            // Create Json Array
+            data.put("index", log.getIdx());
+            data.put("name", OptionalLecture.get().getName());
+            data.put("major", OptionalLecture.get().getMajor());
+            data.put("classify", OptionalLecture.get().getClassify());
+            data.put("time", OptionalLecture.get().getTime());
+            data.put("classes",OptionalLecture.get().getClasses());
+            data.put("credit", OptionalLecture.get().getCredit());
+
+
+            list.add(data);
+        }
+
+        return list;
+    }
+}
