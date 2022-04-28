@@ -2,10 +2,9 @@ package com.example.modoosugang_be.Domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,15 +15,22 @@ import javax.persistence.Table;
 @Entity()                   // Connect table in DB
 @Table(name = "lecture")    // DB table name = "lecture"
 public class Lecture {
+    /*@ManyToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
+     */
+    /*@OneToMany(mappedBy = "professor_id")
+    private List <Professor> professors = new ArrayList<>();
+    */
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lecture_index")
-    private int index;
-
+    private int idx;
+    @Column(name = "professor_id")
+    private String professor;
     @Column(name = "lecture_id")
     private String id;
-    @Column(name = "professor_id")
-    private String proid;
     @Column(name = "lecture_name")
     private String name;
     @Column(name = "lecture_limit")

@@ -15,6 +15,7 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.projectlombok:lombok:1.18.20'
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
     annotationProcessor     'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     implementation 'mysql:mysql-connector-java'
@@ -23,8 +24,12 @@ dependencies {
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
     implementation group: 'com.opencsv', name: 'opencsv', version: '5.4'
 
-
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-stater-data-jpa')
+    compile('com.h2database:h2')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 tasks.named('test') {

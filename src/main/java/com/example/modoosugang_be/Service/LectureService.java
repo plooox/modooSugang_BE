@@ -1,17 +1,13 @@
 package com.example.modoosugang_be.Service;
 
 import com.example.modoosugang_be.Domain.Lecture;
-import com.example.modoosugang_be.Dto.LectureDto;
 import com.example.modoosugang_be.Repository.LectureRepository;
 
 import java.util.List;
-
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Component
+@Service
 @RequiredArgsConstructor
 public class LectureService {
     private final LectureRepository lectureRepository;
@@ -21,13 +17,9 @@ public class LectureService {
         return lectures;
     }
 
-    public int setUpdateLecture(List<Lecture> lecturesList) {
-        int lectures = 0;
-        for (Lecture lecture :lecturesList){
-            lectureRepository.saveAll(lecturesList);
-        }
-
-        return lectures;
+    public void setUpdateLecture(Lecture lecture){
+        lectureRepository.save(lecture);
+    //lectureRepository.UpdateLecture(id, professor, name, limit, credit, major, classes, room, semester, proname, time, classify, univ, idx);
     }
 }
 

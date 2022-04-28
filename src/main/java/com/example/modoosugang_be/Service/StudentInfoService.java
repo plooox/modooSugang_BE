@@ -6,7 +6,6 @@ import com.example.modoosugang_be.Repository.StudentInfoRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -19,12 +18,8 @@ public class StudentInfoService {
         return students;
     }
 
-    public int setUpdateStudent(String name, String birth, String phone, String major, String second, String grade, String enroll, int credit, String pw, String univ) {
-        int students = studentInfoRepository.UpdateStudentInfo(name, birth, phone, major, second, grade, enroll, credit, pw, univ);
-
-        return students;
+    public void setUpdateStudent(Student student) {
+        studentInfoRepository.save(student);
     }
-
-
 }
 
