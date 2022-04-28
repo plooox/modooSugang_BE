@@ -3,7 +3,6 @@ package com.example.modoosugang_be.Controller;
 import com.example.modoosugang_be.Domain.StudentLog;
 import com.example.modoosugang_be.Service.StudentLogService;
 import lombok.RequiredArgsConstructor;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.springframework.web.bind.annotation.*;
 

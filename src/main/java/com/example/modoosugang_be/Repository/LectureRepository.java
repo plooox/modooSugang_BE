@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+<<<<<<< HEAD
 import java.lang.*;
 @Component
 public interface LectureRepository extends JpaRepository<Lecture, Integer> {
@@ -23,4 +24,14 @@ public interface LectureRepository extends JpaRepository<Lecture, Integer> {
     @Query(value = "SELECT v FROM Lecture v WHERE v.univ Like :univ%")
     List<Lecture> findLecture(@Param("univ")String univ);
 
+=======
+
+public interface LectureRepository extends JpaRepository<Lecture, Long> {
+
+    @Query(value = "SELECT v FROM Lecture v WHERE v.professor Like :univ%")
+    List<Lecture> findLecture(@Param("univ")String univ);
+
+    @Query(value = "SELECT v FROM Lecture v WHERE v.professor Like :univ% AND v.id = :id")
+    Lecture findLectureByUnivAndID(@Param("univ") String univ, @Param("id") String id);
+>>>>>>> a67c5f0f5c698fb33d699f02a68307ec669a3b06
 }

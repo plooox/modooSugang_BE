@@ -17,9 +17,16 @@ public class LectureService {
         return lectures;
     }
 
+<<<<<<< HEAD
     public void setUpdateLecture(Lecture lecture){
         lectureRepository.save(lecture);
     //lectureRepository.UpdateLecture(id, professor, name, limit, credit, major, classes, room, semester, proname, time, classify, univ, idx);
     }
+=======
+    public Lecture callLecutureByUnivAndId(String univ, String id) {
+        return lectureRepository.findLectureByUnivAndID(univ, id);
+    }
+
+>>>>>>> a67c5f0f5c698fb33d699f02a68307ec669a3b06
 }
 

@@ -21,8 +21,12 @@ dependencies {
     implementation 'mysql:mysql-connector-java'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+<<<<<<< HEAD
     implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.9'
     implementation group: 'com.opencsv', name: 'opencsv', version: '5.4'
+=======
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+>>>>>>> a67c5f0f5c698fb33d699f02a68307ec669a3b06
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 

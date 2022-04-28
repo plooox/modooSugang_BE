@@ -53,4 +53,8 @@ public class Lecture {
     private String classify;
     @Column(name = "university_name")
     private String univ;
+    @Column(name = "first_schedule")
+    private String firstsch;
+    @Column(name = "second_schedule")
+    private String secondsch;
 }
