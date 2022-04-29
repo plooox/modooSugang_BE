@@ -15,14 +15,10 @@ public class SelectUnivController {
     private final UniversityService universityService;
 
 
-    @RestController
-    public class univ_list {
 
-        @GetMapping("/home/{univ}")
-        public ArrayList<University> test1(@PathVariable(name = "univ") String univ) {
-            System.out.println(univ);
-            return universityService.findUniversity();
-        }
+    @GetMapping("/home/univ")
+    public ArrayList<University> test1(@PathVariable(name = "univ") String univ) {
+        System.out.println(univ);
+        return universityService.findUniversity();
     }
-
 }
