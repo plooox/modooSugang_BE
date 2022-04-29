@@ -21,10 +21,14 @@ public class Lecture {
     @Column(name = "lecture_index")
     private int index;
 
-    @Column(name = "lecture_id")
-    private String id;
+    @Column(name = "first_schedule")
+    private String firstsch;
+    @Column(name = "second_schedule")
+    private String secondsch;
     @Column(name = "professor_id")
     private String proid;
+    @Column(name = "lecture_id")
+    private String id;
     @Column(name = "lecture_name")
     private String name;
     @Column(name = "lecture_limit")
@@ -45,10 +49,5 @@ public class Lecture {
     private String time;
     @Column(name = "lecture_classify")
     private String classify;
-    @Column(name = "university_name")
-    private String univ;
-    @Column(name = "first_schedule")
-    private String firstsch;
-    @Column(name = "second_schedule")
-    private String secondsch;
+
 }

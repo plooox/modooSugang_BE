@@ -22,6 +22,6 @@ public class Request {
 
     @Column(name = "professor_id")
     private String professor;
-    @Column(name = "lecture_id")
+    @Column(name = "lecture_index")
     private String lecture;
 }

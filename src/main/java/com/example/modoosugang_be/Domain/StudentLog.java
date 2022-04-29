@@ -21,17 +21,19 @@ public class StudentLog {
     @Column(name = "log_id")
     private int log;
 
+    @Column(name = "lecture_index")
+    private String lecture;
     @Column(name = "student_id")
     private String id;
+    @Column(name = "schedule_index")
+    private String sch;
     @Column(name = "univ_name")
     private String univ;
-    @Column(name = "lecture_id")
-    private String lecture;
     @Column(name = "semester")
     private String semester;
     @Column(name = "register_log")
     private Date register;
-    @Column(name = "cancle_log")
+    @Column(name = "cancel_log")
     private Date cancel;
     @Column(name = "retake_log")
     private String retake;

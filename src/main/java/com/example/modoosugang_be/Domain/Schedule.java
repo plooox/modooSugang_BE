@@ -18,36 +18,29 @@ import java.io.Serializable;
 public class Schedule implements Serializable {
 
     @Id
-    @Column(name = "id_schedule")
+    @Column(name = "schedule_index")
     private String Id;
 
+    @Column(name = "univ_name")
+    private String univ;
+    @Column(name = "manager_id")
+    private String manager;
     @Column(name = "semester")
     private String semester;
-
     @Column(name = "basket_start")
     private String BasketStart;
-
     @Column(name = "basket_end")
     private String BasketEnd;
-
     @Column(name = "register_start")
     private String RegisterStart;
-
     @Column(name = "register_end")
     private String RegisterEnd;
-
     @Column(name = "modify_start")
     private String ModifyStart;
-
     @Column(name = "modify_end")
     private String ModifyEnd;
-
     @Column(name = "cancle_start")
     private String CancleStart;
-
     @Column(name = "cancle_end")
     private String CancleEnd;
-
-
-
 }

@@ -20,11 +20,11 @@ public class RegisterLecture {
     @Column(name = "register_lecture_id")
     private int id;
 
-    @Column(name = "lecture_id")
+    @Column(name = "lecture_index")
     private String lecture;
     @Column(name = "student_id")
     private String student;
-    @Column(name = "semester")
+    @Column(name = "schedule_index")
     private String semester;
     @Column(name = "univ_name")
     private String univ;

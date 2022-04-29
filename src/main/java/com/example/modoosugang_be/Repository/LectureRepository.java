@@ -13,7 +13,7 @@ import java.lang.*;
 @Component
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
 
-    @Query(value = "SELECT v FROM Lecture v WHERE v.univ Like :univ%")
+    @Query(value = "SELECT v FROM Lecture v WHERE v.proname Like :univ%")
     List<Lecture> findLecture(@Param("univ")String univ);
 
     @Query(value = "SELECT v FROM Lecture v WHERE v.proname Like :univ% AND v.id = :id")
