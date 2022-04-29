@@ -17,8 +17,7 @@ public class SelectUnivController {
 
 
     @GetMapping("/home/univ")
-    public ArrayList<University> test1(@PathVariable(name = "univ") String univ) {
-        System.out.println(univ);
+    public ArrayList<University> test1() {
         return universityService.findUniversity();
     }
 }
