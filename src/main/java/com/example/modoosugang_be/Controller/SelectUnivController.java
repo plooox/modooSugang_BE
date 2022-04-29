@@ -14,8 +14,6 @@ public class SelectUnivController {
 
     private final UniversityService universityService;
 
-
-
     @GetMapping("/home/univ")
     public ArrayList<University> test1() {
         return universityService.findUniversity();
