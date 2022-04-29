@@ -1,30 +1,30 @@
 package com.example.modoosugang_be.Domain;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.sql.Timestamp;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Getter
 @Setter             // getter setter 자동생성
-@RequiredArgsConstructor    // Constructor 주입 -> DI
+//@RequiredArgsConstructor    // Constructor 주입 -> DI
 @Entity()                   // Connect table in DB
 @Table(name = "lecture")    // DB table name = "lecture"
 public class Lecture {
 
     @Id
-    @Column(name = "lecture_idx")
-    private int idx;
+    @Column(name = "lecture_index")
+    private int index;
 
     @Column(name = "lecture_id")
     private String id;
     @Column(name = "professor_id")
-    private String professor;
+    private String proid;
     @Column(name = "lecture_name")
     private String name;
     @Column(name = "lecture_limit")
@@ -39,7 +39,7 @@ public class Lecture {
     private String room;
     @Column(name = "lecture_semester")
     private String semester;
-    @Column(name = "lecture_proffessor")
+    @Column(name = "lecture_professor")
     private String proname;
     @Column(name = "lecture_time")
     private String time;

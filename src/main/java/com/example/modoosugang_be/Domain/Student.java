@@ -1,6 +1,8 @@
 package com.example.modoosugang_be.Domain;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -19,8 +21,6 @@ public class Student {
 
     @Column(name = "student_name")
     private String name;
-    @Column(name = "student_year")
-    private String year;
     @Column(name = "student_birth")
     private Date birth;
     @Column(name = "student_phone")
