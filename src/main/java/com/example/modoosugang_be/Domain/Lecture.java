@@ -19,14 +19,9 @@ public class Lecture {
 
     @Id
     @Column(name = "lecture_index")
-    private int index;
-
-    @Column(name = "first_schedule")
-    private String firstsch;
-    @Column(name = "second_schedule")
-    private String secondsch;
+    private int idx;
     @Column(name = "professor_id")
-    private String proid;
+    private String professor;
     @Column(name = "lecture_id")
     private String id;
     @Column(name = "lecture_name")

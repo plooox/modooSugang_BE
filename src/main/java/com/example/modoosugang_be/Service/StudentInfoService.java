@@ -6,7 +6,6 @@ import com.example.modoosugang_be.Repository.StudentInfoRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +16,10 @@ public class StudentInfoService {
     public List<Student> callUnivStudent(String univ) {
         List<Student> students = studentInfoRepository.findStudent(univ);
         return students;
+    }
+
+    public void setUpdateStudent(Student student) {
+        studentInfoRepository.save(student);
     }
 }
 
