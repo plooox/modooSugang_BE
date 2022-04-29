@@ -3,10 +3,7 @@ package com.example.modoosugang_be.Controller;
 import com.example.modoosugang_be.Domain.University;
 import com.example.modoosugang_be.Service.UniversityService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
@@ -21,9 +18,9 @@ public class SelectUnivController {
     @RestController
     public class univ_list {
 
-        @GetMapping("/home/univ")
-        public ArrayList<University> test1() {
-
+        @GetMapping("/home/{univ}")
+        public ArrayList<University> test1(@PathVariable(name = "univ") String univ) {
+            System.out.println(univ);
             return universityService.findUniversity();
         }
     }
