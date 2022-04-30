@@ -40,7 +40,6 @@ public class LoginController {
             }
         } else {
             Student student = studentService.findStudent(id, univ);
-
             if (student == null) {
                 return false;
             } else {

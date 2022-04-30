@@ -32,4 +32,8 @@ public class RegisterBasketService {
         return registerBasketRepository.findAllByUnivAndStudent(univ,student);
     }
 
+    public List<RegisterBasket> DeleteBasket(Long code, String univ, String student) {
+        return registerBasketRepository.deleteRegisterLectureByIdxAndUnivAndStudent(code,univ,student);
+    }
+
 }
