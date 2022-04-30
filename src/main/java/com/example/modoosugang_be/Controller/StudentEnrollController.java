@@ -57,22 +57,18 @@ public class StudentEnrollController {
     public boolean ApplyLecture(@RequestBody Map<String, Object> param) {
         System.out.println((param)); //  {id=1, code=1010}
 
-//        String id = param.get("id").toString();
+        String id = param.get("id").toString();
         String code = param.get("code").toString();
-//        String univ = param.get("univ").toString();
+        String univ = param.get("univ").toString();
 //        String semester = param.get("semester").toString();
-
-        String semester = "2022_1";
-        String univ = "구름대학교";
-//        int code = 1010;
-
+String semester = "2022_1";
         // code 값으로 lecture 테이블 remain 잔여확인
         Optional<Lecture> OptionalLecture = lectureService.findRemain(Long.valueOf(code));
         int isRemain = OptionalLecture.get().getRemain();
         System.out.println((isRemain));
 
         String lecture_id = OptionalLecture.get().getId();
-        int schedule = 20220101; // 스케쥴 부분 타입 확인 필요
+        int schedule = 1; // 스케쥴 부분 타입 확인 필요
         String student_id = "21611868"; // 일단 임의설정
 
 
@@ -82,13 +78,14 @@ public class StudentEnrollController {
             // Register_lecture에 학생정보 적용
             RegisterLecture regist = new RegisterLecture();
 
-            regist.setId(1L); // register_lecture_id : ??
+            regist.setId(OptionalLecture.get().getIdx()); // register_lecture_id : ??
             regist.setIdx(Long.valueOf(code)); // lecture_index : 강의code ?
-            regist.setLecture("BC1");
+            regist.setLecture(OptionalLecture.get().getRoom());
             regist.setStudent(student_id);
             regist.setSemester(semester);
-            regist.setSchedule("20220101");
+            regist.setSchedule(String.valueOf(schedule));
             regist.setUniv(univ);
+
             registerLectureService.save(regist);
 
             return true;
@@ -104,18 +101,16 @@ public class StudentEnrollController {
 
 //        String id = param.get("id").toString();
 //        String code = param.get("code").toString();
-//        String univ = param.get("univ").toString();
-//        String semester = param.get("semester").toString();
+        String student_id = param.get("id").toString();
+        String univ = param.get("univ").toString();
+        String semester = param.get("semester").toString();
 
-        String semester = "2022_1";
-        String univ = "구름대학교";
-        String student_id = "21611868"; // 일단 임의설정
         int code = 1010;
 
         List<RegisterLecture> logs = registerLectureService.findLectureList(semester, univ, student_id);
         List list = new ArrayList();
         for (RegisterLecture log : logs) {
-            Optional<Lecture> OptionalLecture = lectureService.findRemain((long) code);
+            Optional<Lecture> OptionalLecture = lectureService.findRemain(log.getIdx());
 
             JSONObject data = new JSONObject();
 
@@ -131,6 +126,50 @@ public class StudentEnrollController {
 
             list.add(data);
         }
+
+        return list;
+    }
+
+
+    @PostMapping("/student/enroll/drop/lecture")
+    public boolean DropLecture(@RequestBody Map<String, Object> param) {
+        System.out.println((param));
+
+        long id = Long.parseLong(param.get("id").toString()); // g
+        Long code = Long.valueOf(param.get("code").toString());
+        String univ = param.get("univ").toString();
+        String semester = param.get("semester").toString();
+        String student = param.get("student").toString();
+
+
+        registerLectureService.DeleteLecture(code, univ, semester, student);
+
+        return true;
+
+    }
+
+
+    @PostMapping("/student/enroll/lecture_list/recommend")
+    public List RecommendLectureTable(@RequestBody Map<String, Object> param) {
+        String semester = param.get("semester").toString();
+        List<Lecture> logs = lectureService.findLectureList(semester);
+        List list = new ArrayList();
+        for (Lecture log : logs) {
+            JSONObject data = new JSONObject();
+
+            // Create Json Array
+            data.put("index", log.getIdx());
+//            data.put("name", log.getName());
+            data.put("name", "하이하이");
+            data.put("major", log.getMajor());
+            data.put("classify", log.getClassify());
+            data.put("time", log.getTime());
+            data.put("classes", log.getClasses());
+            data.put("credit", log.getCredit());
+            list.add(data);
+        }
+        System.out.println("1번테이블 ==================");
+        System.out.println(list);
 
         return list;
     }

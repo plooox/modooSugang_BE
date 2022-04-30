@@ -13,6 +13,10 @@ public class RegisterLectureService {
 
     private final RegisterLectureRepository registerLectureRepository;
 
+    public List<RegisterLecture> DeleteLecture(Long code, String univ, String semester, String student) {
+        return registerLectureRepository.deleteRegisterLectureByIdxAndUnivAndSemesterAndStudent(code,univ,semester,student);
+    }
+
     public List<RegisterLecture> findRegisterLecture(String univ, String student) {
         return registerLectureRepository.findAllByUnivAndStudent(univ, student);
     }

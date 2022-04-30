@@ -32,15 +32,15 @@ public class StudentBasketController {
         System.out.println((param));
         String code = param.get("code").toString();
         String univ = param.get("univ").toString();
+//        String semester = param.get("semester").toString();
         long id = Long.parseLong(param.get("id").toString());
 
-        String semester = "2022_1";
-        int schedule = 20220101; // 스케쥴 부분 타입 확인 필요
+        int schedule = 1; // 스케쥴 부분 타입 확인 필요
         String student_id = "21611868"; // 일단 임의설정
 
         RegisterBasket regist = new RegisterBasket();
 
-        regist.setId(id); // register_lecture_id : ??
+        regist.setId(Long.valueOf(code)); // register_lecture_id : ??
         regist.setIdx(Long.valueOf(code)); // lecture_index : 강의code ?
         regist.setStudent(student_id);
         regist.setSchedule(schedule);
@@ -82,6 +82,21 @@ public class StudentBasketController {
         }
 
         return list;
+    }
+
+    @PostMapping("/student/enroll/drop/basket")
+    public boolean DropLecture(@RequestBody Map<String, Object> param) {
+        System.out.println((param));
+
+        long id = Long.parseLong(param.get("id").toString()); // g
+        Long code = Long.valueOf(param.get("code").toString());
+        String univ = param.get("univ").toString();
+        String semester = param.get("semester").toString();
+        String student = param.get("student").toString();
+
+        registerBasketService.DeleteBasket(code, univ, student);
+
+        return true;
     }
 
 }

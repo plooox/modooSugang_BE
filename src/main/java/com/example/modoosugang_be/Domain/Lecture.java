@@ -40,20 +40,22 @@ public class Lecture implements Serializable {
     private String room;
     @Column(name = "lecture_semester")
     private String semester;
-    @Column(name = "lecture_proffessor")
+    @Column(name = "lecture_professor")
     private String proname;
     @Column(name = "lecture_time")
     private String time;
     @Column(name = "lecture_classify")
     private String classify;
-    @Column(name = "university_name")
-    private String univ;
     @Column(name = "first_schedule")
     private String firstsch;
     @Column(name = "second_schedule")
     private String secondsch;
     @Column(name = "lecture_remain")
     private int remain;
+
+//
+//    @Column(name = "university_name")
+//    private String univ;
 
 
 

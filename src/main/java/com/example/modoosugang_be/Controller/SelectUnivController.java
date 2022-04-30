@@ -16,14 +16,10 @@ public class SelectUnivController {
 
     private final UniversityService universityService;
 
-
-    @RestController
-    public class univ_list {
-        @PostMapping("/home/univ")
-        public ArrayList<University> test1() {
-
-            return universityService.findUniversity();
-        }
+    @PostMapping("/home/univ")
+    public ArrayList<University> univ_list() {
+//        System.out.println(universityService.findUniversity());
+        return universityService.findUniversity();
     }
 
 }
