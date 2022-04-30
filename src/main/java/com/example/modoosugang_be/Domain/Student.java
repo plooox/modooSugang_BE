@@ -19,8 +19,14 @@ public class Student {
     @Column(name = "student_id")
     private String id;
 
+    @Column(name = "schedule_index")
+    private String sch;
+    @Column(name = "univ_name")
+    private String univ;
     @Column(name = "student_name")
     private String name;
+    @Column(name = "student_year")
+    private String grade;
     @Column(name = "student_birth")
     private Date birth;
     @Column(name = "student_phone")
@@ -30,13 +36,12 @@ public class Student {
     @Column(name = "student_second_major")
     private String second;
     @Column(name = "student_grade")
-    private BigDecimal grade;
+    private BigDecimal score;
     @Column(name = "student_enroll")
     private String enroll;
     @Column(name = "student_credit")
     private int credit;
     @Column(name = "student_pw")
     private String pw;
-    @Column(name = "univ_name")
-    private String univ;
+
 }

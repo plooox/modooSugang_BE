@@ -43,9 +43,6 @@ public class StudentMypageController {
             data.put("lecture_room", lecture.getRoom());
             data.put("lecture_classroom", lecture.getClasses());
             data.put("lecture_credit", lecture.getCredit());
-            data.put("lecture_first_sch", lecture.getFirstsch());
-            data.put("lecture_second_sch", lecture.getSecondsch());
-            data.put("lecture_idx", lecture.getIndex());
 
             list.add(data);
         }
