@@ -14,9 +14,14 @@ import java.lang.*;
 @Component
 public interface LectureRepository extends JpaRepository<Lecture, Long> {
 
-    @Query(value = "SELECT v FROM Lecture v WHERE v.proname Like :univ%")
+    @Query(value = "SELECT v FROM Lecture v WHERE v.professor Like :univ%")
     List<Lecture> findLecture(@Param("univ")String univ);
 
-    @Query(value = "SELECT v FROM Lecture v WHERE v.proname Like :univ% AND v.id = :id")
+    @Query(value = "SELECT v FROM Lecture v WHERE v.professor Like :univ% AND v.id = :id")
     Lecture findLectureByUnivAndID(@Param("univ") String univ, @Param("id") String id);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM Lecture v WHERE v.professor Like :univ%")
+    void deleteByUniv(@Param("univ") String univ);
 }

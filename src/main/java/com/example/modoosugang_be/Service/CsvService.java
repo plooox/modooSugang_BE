@@ -19,7 +19,8 @@ public class CsvService {
     private final LectureRepository lectureRepository;
     private final ProfessorRepository professorRepository;
 
-    public void saveLectures(MultipartFile file) {
+    public void saveLectures(MultipartFile file, String univ) {
+        lectureRepository.deleteByUniv(univ);
         try {
             List<Lecture> lectures = CsvUtils.csvToLectures(file.getInputStream());
             List<Professor> professors = CsvUtils.csvToProfessors(file.getInputStream());
