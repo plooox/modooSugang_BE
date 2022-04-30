@@ -4,11 +4,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Getter
 @Setter             // getter setter 자동생성
@@ -18,6 +16,7 @@ import java.io.Serializable;
 public class Schedule implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "schedule_index")
     private String Id;
 
@@ -28,19 +27,19 @@ public class Schedule implements Serializable {
     @Column(name = "semester")
     private String semester;
     @Column(name = "basket_start")
-    private String BasketStart;
+    private Timestamp BasketStart;
     @Column(name = "basket_end")
-    private String BasketEnd;
+    private Timestamp BasketEnd;
     @Column(name = "register_start")
-    private String RegisterStart;
+    private Timestamp RegisterStart;
     @Column(name = "register_end")
-    private String RegisterEnd;
+    private Timestamp RegisterEnd;
     @Column(name = "modify_start")
-    private String ModifyStart;
+    private Timestamp ModifyStart;
     @Column(name = "modify_end")
-    private String ModifyEnd;
-    @Column(name = "cancle_start")
-    private String CancleStart;
-    @Column(name = "cancle_end")
-    private String CancleEnd;
+    private Timestamp ModifyEnd;
+    @Column(name = "cancel_start")
+    private Timestamp CancelStart;
+    @Column(name = "cancel_end")
+    private Timestamp CancelEnd;
 }

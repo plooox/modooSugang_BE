@@ -6,29 +6,32 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Long>{
     Optional<Schedule> findBySemester(String semester);
 
-    @Transactional
-    @Modifying
-    @Query("update Schedule m set m.BasketStart = :start , m.BasketEnd = :end where m.Id = :id")
-    int updateBasket(String start, String end, String id);
+    Optional<Schedule> findByUnivAndSemester(String univ, String semester);
 
     @Transactional
     @Modifying
-    @Query("update Schedule m set m.RegisterStart = :start , m.RegisterEnd = :end where m.Id = :id")
-    int updateRegister(String start, String end, String id);
+    @Query("update Schedule m set m.BasketStart = :start , m.BasketEnd = :end where m.univ = :univ and m.semester = :semester")
+    int updateBasket(Timestamp start, Timestamp end, String univ, String semester);
 
     @Transactional
     @Modifying
-    @Query("update Schedule m set m.ModifyStart = :start , m.ModifyEnd = :end where m.Id = :id")
-    int updateModify(String start, String end, String id);
+    @Query("update Schedule m set m.RegisterStart = :start , m.RegisterEnd = :end where m.univ = :univ and m.semester = :semester")
+    int updateRegister(Timestamp start, Timestamp end, String univ, String semester);
 
     @Transactional
     @Modifying
-    @Query("update Schedule m set m.CancleStart = :start , m.CancleEnd = :end where m.Id = :id")
-    int updateCancle(String start, String end, String id);
+    @Query("update Schedule m set m.ModifyStart = :start , m.ModifyEnd = :end where m.univ = :univ and m.semester = :semester")
+    int updateModify(Timestamp start, Timestamp end, String univ, String semester);
+
+    @Transactional
+    @Modifying
+    @Query("update Schedule m set m.CancelStart = :start , m.CancelEnd = :end where m.univ = :univ and m.semester = :semester")
+    int updateCancel(Timestamp start, Timestamp end, String univ, String semester);
 
 }
