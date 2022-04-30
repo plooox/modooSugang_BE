@@ -8,4 +8,9 @@ import java.util.List;
 public interface RegisterLectureRepository extends JpaRepository<RegisterLecture, Long> {
     List<RegisterLecture> findAllByUnivAndStudent(String univ, String student);
 
+    List<RegisterLecture> findAllByStudent(String student);
+
+
+    List<RegisterLecture> findAllBySemesterAndUnivAndStudent(String semester, String univ, String student_id);
+
 }

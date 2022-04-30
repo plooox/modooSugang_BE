@@ -20,4 +20,8 @@ public class RegisterLectureService {
     public RegisterLecture save(RegisterLecture regist) {
         return registerLectureRepository.save(regist);
     }
+
+    public List<RegisterLecture> findLectureList(String semester, String univ, String student_id) {
+        return registerLectureRepository.findAllBySemesterAndUnivAndStudent(semester,univ,student_id);
+    }
 }
