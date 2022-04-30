@@ -20,7 +20,7 @@ public class Student {
     private String id;
 
     @Column(name = "schedule_index")
-    private String sch;
+    private int sch;
     @Column(name = "univ_name")
     private String univ;
     @Column(name = "student_name")

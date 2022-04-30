@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,6 +18,8 @@ import com.example.modoosugang_be.Domain.Professor;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import com.example.modoosugang_be.Domain.Student;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -76,6 +80,36 @@ public class CsvUtils {
                 professors.add(professor);
             }
             return professors;
+        } catch (IOException e) {
+            throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
+        }
+    }
+
+    public static List<Student> csvToStudents(InputStream is) {
+        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+             CSVParser csvParser = new CSVParser(fileReader,
+                     CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
+            List<Student> students = new ArrayList<Student>();
+            Iterable<CSVRecord> csvRecords = csvParser.getRecords();
+            for (CSVRecord csvRecord : csvRecords) {
+                Student student = new Student();
+
+                student.setId(csvRecord.get("student_id"));
+                student.setUniv(csvRecord.get("univ_name"));
+                student.setName(csvRecord.get("student_name"));
+                student.setGrade(csvRecord.get("student_year"));
+                student.setBirth(Date.valueOf(csvRecord.get("student_birth")));
+                student.setPhone(csvRecord.get("student_phone"));
+                student.setMajor(csvRecord.get("student_major"));
+                student.setSecond(csvRecord.get("student_second_major"));
+                student.setScore(BigDecimal.valueOf(Double.valueOf(csvRecord.get("student_grade"))));
+                student.setEnroll(csvRecord.get("student_enroll"));
+                student.setCredit(Integer.parseInt(csvRecord.get("student_credit")));
+                student.setPw(csvRecord.get("student_pw"));
+
+                students.add(student);
+            }
+            return students;
         } catch (IOException e) {
             throw new RuntimeException("fail to parse CSV file: " + e.getMessage());
         }
