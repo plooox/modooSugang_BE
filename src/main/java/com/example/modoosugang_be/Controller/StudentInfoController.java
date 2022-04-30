@@ -1,5 +1,6 @@
 package com.example.modoosugang_be.Controller;
 
+import com.example.modoosugang_be.Service.CsvService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 
 public class StudentInfoController {
-    private final StudentInfoService studentInfoService;
+    private final CsvService csvService;
 
     @PostMapping(value = "/manage/upload/studentInfo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void UploadStudentInfo(@RequestParam("file") MultipartFile file, @RequestParam("univ") String univ) {
@@ -21,5 +22,7 @@ public class StudentInfoController {
         System.out.println(file.getSize());
         System.out.println(file.getContentType());
         System.out.println(univ);
+
+        csvService.saveStudent(file, univ);
     }
 }

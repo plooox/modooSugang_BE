@@ -7,12 +7,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Optional;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Long>{
     Optional<Schedule> findBySemester(String semester);
 
     Optional<Schedule> findByUnivAndSemester(String univ, String semester);
+
+    List<Schedule> findAllByUniv(String univ);
 
     @Transactional
     @Modifying

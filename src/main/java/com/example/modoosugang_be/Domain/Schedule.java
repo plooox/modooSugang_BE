@@ -18,7 +18,7 @@ public class Schedule implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "schedule_index")
-    private String Id;
+    private int Id;
 
     @Column(name = "univ_name")
     private String univ;
