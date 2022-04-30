@@ -2,10 +2,7 @@ package com.example.modoosugang_be.Domain;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,8 +15,14 @@ import javax.persistence.Table;
 public class Lecture {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "lecture_index")
     private int idx;
+
+    @Column(name = "first_schedule")
+    private String firstsch;
+    @Column(name = "second_schedule")
+    private String secondsch;
     @Column(name = "professor_id")
     private String professor;
     @Column(name = "lecture_id")
