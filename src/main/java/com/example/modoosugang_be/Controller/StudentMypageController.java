@@ -1,8 +1,10 @@
 package com.example.modoosugang_be.Controller;
 
 import com.example.modoosugang_be.Domain.Lecture;
+import com.example.modoosugang_be.Domain.RegisterBasket;
 import com.example.modoosugang_be.Domain.RegisterLecture;
 import com.example.modoosugang_be.Service.LectureService;
+import com.example.modoosugang_be.Service.RegisterBasketService;
 import com.example.modoosugang_be.Service.RegisterLectureService;
 import lombok.RequiredArgsConstructor;
 import org.json.simple.JSONObject;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -19,6 +22,7 @@ public class StudentMypageController {
 
     private final RegisterLectureService registerLectureService;
     private final LectureService lectureService;
+    private final RegisterBasketService registerBasketService;
 
     @PostMapping("/student/Mypage")
     public List searchRegisterdLecture(@RequestBody Map<String, Object> param) {
@@ -29,7 +33,7 @@ public class StudentMypageController {
 
         for (RegisterLecture registerLecture : registerLectures) {
             System.out.println(registerLecture.getLecture());
-            Lecture lecture = lectureService.callLecutureByUnivAndId(univ, registerLecture.getLecture());
+            Lecture lecture = lectureService.callLectureByUnivAndIdx(univ, registerLecture.getLecture());
 
             JSONObject data = new JSONObject();
 
@@ -43,10 +47,50 @@ public class StudentMypageController {
             data.put("lecture_room", lecture.getRoom());
             data.put("lecture_classroom", lecture.getClasses());
             data.put("lecture_credit", lecture.getCredit());
+            data.put("lecture_first_sch", lecture.getFirstsch());
+            data.put("lecture_second_sch", lecture.getSecondsch());
 
             list.add(data);
         }
+        System.out.println(list.size());
         return list;
     }
 
+
+    @PostMapping("/student/Mypage/Basket")
+    public List searchRegisterdBasket(@RequestBody Map<String, Object> param) {
+        String univ = param.get("univ").toString();
+//        String id = param.get("id").toString();
+        String semester = param.get("semester").toString();
+        String id = univ + "@" + param.get("id").toString();
+        List<RegisterBasket> logs = registerBasketService.findLectureList(univ, id);
+
+        List list = new ArrayList();
+
+        for (RegisterBasket log : logs) {
+            Optional<Lecture> OptionalLecture = lectureService.findRemain(log.getIdx());
+
+            JSONObject data = new JSONObject();
+
+            data.put("lecture_id", OptionalLecture.get().getId());
+            data.put("lecture_name", OptionalLecture.get().getName());
+            data.put("lecture_professor", OptionalLecture.get().getProname());
+            data.put("lecture_class", OptionalLecture.get().getClasses());
+            data.put("lecture_major", OptionalLecture.get().getMajor());
+            data.put("lecture_classify", OptionalLecture.get().getClassify());
+            data.put("lecture_time", OptionalLecture.get().getTime());
+            data.put("lecture_room", OptionalLecture.get().getRoom());
+            data.put("lecture_classroom", OptionalLecture.get().getClasses());
+            data.put("lecture_credit", OptionalLecture.get().getCredit());
+            data.put("lecture_first_sch", OptionalLecture.get().getFirstsch());
+            data.put("lecture_second_sch", OptionalLecture.get().getSecondsch());
+            data.put("lecture_idx", log.getIdx());
+
+
+            list.add(data);
+        }
+
+        System.out.println((list));
+        return list;
+    }
 }

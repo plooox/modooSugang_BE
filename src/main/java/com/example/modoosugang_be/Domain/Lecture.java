@@ -3,13 +3,16 @@ package com.example.modoosugang_be.Domain;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.sql.Timestamp;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Getter
 @Setter             // getter setter 자동생성
-//@RequiredArgsConstructor    // Constructor 주입 -> DI
+@RequiredArgsConstructor    // Constructor 주입 -> DI
 @Entity()                   // Connect table in DB
 @Table(name = "lecture")    // DB table name = "lecture"
 public class Lecture {
@@ -47,5 +50,6 @@ public class Lecture {
     private String time;
     @Column(name = "lecture_classify")
     private String classify;
-
+    @Column(name = "lecture_remain")
+    private int remain;
 }

@@ -55,6 +55,8 @@ public class CsvUtils {
                 lecture.setProname(csvRecord.get("lecture_professor"));
                 lecture.setTime(csvRecord.get("lecture_time"));
                 lecture.setClassify(csvRecord.get("lecture_classify"));
+                lecture.setRemain(Integer.parseInt(csvRecord.get("lecture_remain")));
+
                 lectures.add(lecture);
             }
             return lectures;
